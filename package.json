@@ -1,0 +1,21 @@
+{
+	"name": "syncvault",
+	"private": true,
+	"workspaces": [
+		"packages/*",
+		"examples/todos"
+	],
+	"scripts": {
+		"dev:server": "bun run --cwd packages/server dev",
+		"dev:dashboard": "bun run --cwd packages/dashboard dev",
+		"dev:todos": "bun run --cwd examples/todos dev",
+		"recover": "bun run --cwd packages/server recover",
+		"build:dashboard": "bun run --cwd packages/dashboard build",
+		"build:todos": "bun run --cwd examples/todos build",
+		"build:docker": "docker build -t syncvault .",
+		"test": "bun run --filter '*' test",
+		"check": "bun run --filter '*' check",
+		"lint": "bun run --filter '*' lint",
+		"format": "bun run --filter '*' format"
+	}
+}

@@ -1,0 +1,48 @@
+@reference '#stylesheet';
+
+@layer properties, theme, base, components, utilities;
+
+@layer components {
+	/* Colour comes from data-tint (see tints.css) */
+	.Alert {
+		display: grid;
+		grid-template-columns: 1fr;
+		align-items: start;
+		row-gap: --spacing(0.5);
+		width: 100%;
+		padding: --spacing(3) --spacing(4);
+
+		font-size: var(--text-sm);
+		line-height: var(--text-sm--line-height);
+
+		background-color: var(--tint-muted);
+		color: var(--tint-text);
+		border: 1px solid var(--tint-muted-border);
+		border-radius: var(--radius-lg);
+
+		/* An icon as the first child gets its own column */
+		&:has(> svg) {
+			grid-template-columns: --spacing(4) 1fr;
+			column-gap: --spacing(3);
+		}
+
+		& > svg {
+			width: --spacing(4);
+			height: --spacing(4);
+			/* Centre on the first line of text */
+			translate: 0 2px;
+			color: var(--tint-vivid);
+		}
+	}
+
+	.AlertTitle {
+		grid-column-start: -2;
+		font-weight: var(--font-weight-medium);
+	}
+
+	.AlertDescription {
+		grid-column-start: -2;
+		color: --alpha(var(--tint-text) / 80%);
+		text-wrap: pretty;
+	}
+}

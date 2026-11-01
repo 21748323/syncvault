@@ -1,0 +1,12 @@
+**/node_modules
+**/build
+**/.svelte-kit
+packages/server/data
+**/*.sqlite*
+**/.env*
+**/.DS_Store
+.git
+.vscode
+docs
+examples/todos/src
+examples/todos/static

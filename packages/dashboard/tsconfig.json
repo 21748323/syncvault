@@ -1,0 +1,9 @@
+{
+	"extends": "$app/tsconfig",
+	"compilerOptions": {
+		"strict": true,
+		// bun: the API client's types come from the server's source.
+		"types": ["$app/types", "node", "bun"]
+	},
+	"include": ["src", "vite.config.ts"]
+}

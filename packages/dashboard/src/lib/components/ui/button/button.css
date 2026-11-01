@@ -1,0 +1,122 @@
+@reference '#stylesheet';
+
+@layer properties, theme, base, components, utilities;
+
+@layer components {
+	.Button {
+		display: inline-flex;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		gap: --spacing(1.5);
+		height: --spacing(10);
+		padding-inline: --spacing(4);
+		white-space: nowrap;
+		user-select: none;
+		cursor: pointer;
+
+		font-size: var(--text-sm);
+		line-height: var(--text-sm--line-height);
+		font-weight: var(--font-weight-medium);
+
+		border: 1px solid transparent;
+		border-radius: 10px;
+		outline: 2px solid transparent;
+		outline-offset: -1px;
+
+		transition-property:
+			color, background-color, border-color, outline-color, box-shadow;
+		transition-duration: var(--default-transition-duration);
+		transition-timing-function: var(--default-transition-timing-function);
+
+		&:focus-visible {
+			outline-color: var(--color-ring);
+		}
+
+		&:active {
+			scale: 0.99;
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			&:active {
+				scale: none;
+			}
+		}
+
+		&:is(:disabled, [aria-disabled='true']) {
+			pointer-events: none;
+			opacity: 0.5;
+		}
+
+		@media (forced-colors: active) {
+			&:not(:focus-visible) {
+				outline-style: none;
+			}
+		}
+
+		& > svg {
+			flex-shrink: 0;
+			width: --spacing(4);
+			height: --spacing(4);
+			pointer-events: none;
+		}
+
+		/* Shape */
+
+		&[data-shape='square'] {
+			padding-inline: 0;
+			aspect-ratio: 1;
+		}
+
+		/* Variant: how much weight the button carries. Its colour comes from the
+		   --tint-* variables set by data-tint (see tints.css). */
+
+		&[data-variant='primary'] {
+			background-color: var(--tint-fill);
+			color: var(--tint-on-fill);
+			border-color: var(--tint-fill-border);
+
+			&:focus-visible {
+				box-shadow: inset 0 0 0 1.5px var(--color-background);
+			}
+			&:hover {
+				background-color: --alpha(var(--tint-fill) / 92%);
+			}
+			&:active {
+				background-color: --alpha(var(--tint-fill) / 98%);
+			}
+		}
+
+		&[data-variant='outline'] {
+			color: var(--tint-text);
+			border-color: var(--tint-muted-border);
+
+			&:hover {
+				background-color: --alpha(
+					currentColor / calc(3% * var(--tint-strength))
+				);
+			}
+			&:active {
+				background-color: --alpha(
+					currentColor / calc(6% * var(--tint-strength))
+				);
+			}
+		}
+
+		&[data-variant='ghost'] {
+			/* Coloured tints use the vivid text so the hue reads at a glance */
+			color: var(--tint-vivid);
+
+			&:hover {
+				background-color: --alpha(
+					currentColor / calc(5% * var(--tint-strength))
+				);
+			}
+			&:active {
+				background-color: --alpha(
+					currentColor / calc(8% * var(--tint-strength))
+				);
+			}
+		}
+	}
+}

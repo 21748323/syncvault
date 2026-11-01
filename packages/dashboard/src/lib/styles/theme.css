@@ -1,0 +1,70 @@
+/*
+ * One dark theme. Every colour role X is a family:
+ *   X              filled surface (primary buttons)
+ *   on-X           foreground on an X surface
+ *   X-border       border paired with an X surface
+ *   X-muted        subtle tinted surface (alerts, icon tiles)
+ *   X-muted-border border for X-muted surfaces
+ *   as-X           X used as a foreground on the background or X-muted
+ *
+ * Roles: neutral (graphite), accent (purple, the only working accent), danger
+ * and warning. Components pick one with a `tint` prop; see tints.css.
+ *
+ * Standalone: background/on-background (page), surface (cards), popover
+ * (menus), as-muted and
+ * as-faint (secondary and tertiary text), border, ring.
+ */
+
+@theme {
+	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	/* Headings */
+	--font-display: 'Bricolage Grotesque Variable', var(--font-sans);
+	--font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+	--color-background: #1a1a1a;
+	--color-on-background: #fafafa;
+	--color-surface: #212121;
+	/* Floating menus, a step above surface */
+	--color-popover: #292929;
+	--color-as-muted: #b0b0b0;
+	--color-as-faint: #7c7c7c;
+	--color-border: #363636;
+	--color-ring: #c3b3d3;
+
+	/* The brand's own colours, for decoration (the sign-in backdrop), not UI */
+	--color-brand-primary: #4e46dd;
+	--color-brand-secondary: #65d0ea;
+
+	--color-neutral: #ededed;
+	--color-on-neutral: #1a1a1a;
+	--color-neutral-border: #ffffff;
+	--color-neutral-muted: #2f2f2f;
+	--color-neutral-muted-border: #363636;
+	--color-as-neutral: #fafafa;
+
+	--color-accent: #dfceef;
+	--color-on-accent: #000000;
+	--color-accent-border: #aea2b9;
+	--color-accent-muted: oklch(0.28 0.025 307);
+	--color-accent-muted-border: oklch(0.37 0.035 307);
+	--color-as-accent: #dcd0e9;
+
+	--color-danger: oklch(0.54 0.15 22);
+	--color-on-danger: #ffffff;
+	--color-danger-border: oklch(0.61 0.14 22);
+	--color-danger-muted: oklch(0.27 0.035 22);
+	--color-danger-muted-border: oklch(0.36 0.05 22);
+	--color-as-danger: oklch(0.9 0.05 22);
+
+	--color-warning: oklch(0.56 0.1 62);
+	--color-on-warning: #ffffff;
+	--color-warning-border: oklch(0.63 0.095 62);
+	--color-warning-muted: oklch(0.27 0.035 62);
+	--color-warning-muted-border: oklch(0.36 0.05 62);
+	--color-as-warning: oklch(0.9 0.05 62);
+
+	/* Multiplier for currentColor hover/active tints; light on dark needs more */
+	--tint-strength: 2;
+	/* How much of a fill colour vivid text (ghost buttons, errors) mixes in */
+	--vivid-mix: 45%;
+}

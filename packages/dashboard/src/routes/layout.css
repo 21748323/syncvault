@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/jetbrains-mono';
+@import '#lib/styles/theme.css';
+
+@layer base {
+	body {
+		background-color: var(--color-background);
+		color: var(--color-on-background);
+		font-family: var(--font-sans);
+		font-size: var(--text-sm);
+		line-height: var(--text-sm--line-height);
+		-webkit-font-smoothing: antialiased;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-display);
+	}
+
+	::selection {
+		background-color: --alpha(var(--color-as-accent) / 25%);
+	}
+
+	code,
+	.font-mono {
+		font-variant-ligatures: none;
+	}
+
+	/* Inline code in running text, like PUBLIC_URL */
+	code {
+		padding: 1px 5px;
+		font-family: var(--font-mono);
+		font-size: var(--text-xs);
+		color: var(--color-on-background);
+		background-color: --alpha(white / 6%);
+		border: 1px solid --alpha(white / 8%);
+		border-radius: var(--radius-sm);
+	}
+}

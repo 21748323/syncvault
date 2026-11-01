@@ -1,0 +1,60 @@
+@reference '#stylesheet';
+
+@layer properties, theme, base, components, utilities;
+
+@layer components {
+	.Input {
+		width: 100%;
+		min-width: 0;
+		height: --spacing(10);
+		padding-inline: --spacing(4);
+
+		/* 16px on mobile stops iOS Safari zooming in on focus */
+		font-size: var(--text-base);
+		line-height: var(--text-base--line-height);
+		color: var(--color-on-background);
+
+		@variant md {
+			font-size: var(--text-sm);
+			line-height: var(--text-sm--line-height);
+		}
+
+		background-color: var(--color-background);
+		border: 1px solid var(--color-border);
+		border-radius: 10px;
+		outline: 2px solid transparent;
+		outline-offset: -1px;
+
+		transition-property:
+			color, background-color, border-color, outline-color, box-shadow;
+		transition-duration: var(--default-transition-duration);
+		transition-timing-function: var(--default-transition-timing-function);
+
+		&::placeholder {
+			color: --alpha(currentColor / 50%);
+		}
+
+		&:focus-visible {
+			outline-color: var(--color-ring);
+		}
+
+		&:disabled {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+
+		@media (forced-colors: active) {
+			&:not(:focus-visible) {
+				outline-style: none;
+			}
+		}
+
+		&[aria-invalid='true'] {
+			border-color: var(--color-danger);
+
+			&:focus-visible {
+				outline-color: var(--color-danger);
+			}
+		}
+	}
+}

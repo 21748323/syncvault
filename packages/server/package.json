@@ -1,0 +1,30 @@
+{
+	"name": "@syncvault/server",
+	"version": "0.1.0",
+	"module": "src/index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"dev": "bun --watch src/index.ts",
+		"start": "bun src/index.ts",
+		"recover": "bun src/recover.ts",
+		"test": "bun test",
+		"check": "tsc --noEmit",
+		"format": "prettier --write .",
+		"db:generate": "drizzle-kit generate"
+	},
+	"devDependencies": {
+		"@trivago/prettier-plugin-sort-imports": "^6.0.2",
+		"@types/bun": "latest",
+		"drizzle-kit": "^1.0.0-rc.5",
+		"prettier": "^3.9.10"
+	},
+	"peerDependencies": {
+		"typescript": "^6"
+	},
+	"dependencies": {
+		"@simplewebauthn/server": "^14.0.3",
+		"drizzle-orm": "^1.0.0-rc.5",
+		"elysia": "^1.4.30"
+	}
+}

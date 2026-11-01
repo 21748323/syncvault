@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+@plugin 'daisyui' {
+	themes:
+		light --default,
+		dark --prefersdark;
+	/* Its gutter only reserves space while a modal is open; ours is always on. */
+	exclude: rootscrollgutter;
+}
+
+@layer base {
+	/* Keep the scrollbar's space reserved so switching between short and long
+	   lists doesn't shift the layout sideways. */
+	html {
+		scrollbar-gutter: stable;
+	}
+}

@@ -1,0 +1,50 @@
+@reference '#stylesheet';
+
+@layer properties, theme, base, components, utilities;
+
+@layer components {
+	.Field {
+		display: flex;
+		flex-direction: column;
+		gap: --spacing(2);
+		min-width: 0;
+	}
+
+	.Label {
+		display: inline-flex;
+		align-items: center;
+		gap: --spacing(2);
+
+		font-size: var(--text-sm);
+		line-height: 1;
+		font-weight: var(--font-weight-medium);
+	}
+
+	/* Help text belongs to its field, so it sits a step below the label */
+	.FieldDescription,
+	.FieldError {
+		display: flex;
+		align-items: flex-start;
+		gap: --spacing(1.5);
+
+		font-size: var(--text-xs);
+		line-height: var(--text-xs--line-height);
+		text-wrap: pretty;
+
+		& > svg {
+			flex-shrink: 0;
+			width: 14px;
+			height: 14px;
+			margin-top: 1px;
+		}
+	}
+
+	.FieldDescription {
+		color: var(--color-as-muted);
+	}
+
+	.FieldError {
+		/* data-tint="danger" is set in the markup (see tints.css) */
+		color: var(--tint-vivid);
+	}
+}

@@ -1,0 +1,69 @@
+@reference '#stylesheet';
+
+@layer properties, theme, base, components, utilities;
+
+/*
+ * Tints pick which colour family a component draws from. Any element with a
+ * data-tint attribute gets these --tint-* variables, and components (Button,
+ * Alert, ...) build their variants from them instead of from a fixed role. A
+ * component's `variant` sets its weight; its `tint` sets its colour.
+ *
+ *   --tint-fill / --tint-on-fill / --tint-fill-border   filled surface
+ *   --tint-muted / --tint-muted-border                 subtle tinted surface
+ *   --tint-text                                        foreground on background
+ *   --tint-vivid                                       more saturated foreground
+ */
+
+@layer components {
+	[data-tint='neutral'] {
+		--tint-fill: var(--color-neutral);
+		--tint-on-fill: var(--color-on-neutral);
+		--tint-fill-border: var(--color-neutral-border);
+		--tint-muted: var(--color-neutral-muted);
+		--tint-muted-border: var(--color-neutral-muted-border);
+		--tint-text: var(--color-as-neutral);
+		--tint-vivid: var(--color-as-neutral);
+	}
+
+	[data-tint='accent'] {
+		--tint-fill: var(--color-accent);
+		--tint-on-fill: var(--color-on-accent);
+		--tint-fill-border: var(--color-accent-border);
+		--tint-muted: var(--color-accent-muted);
+		--tint-muted-border: var(--color-accent-muted-border);
+		--tint-text: var(--color-as-accent);
+		--tint-vivid: color-mix(
+			in oklab,
+			var(--color-as-accent),
+			var(--color-accent) var(--vivid-mix)
+		);
+	}
+
+	[data-tint='danger'] {
+		--tint-fill: var(--color-danger);
+		--tint-on-fill: var(--color-on-danger);
+		--tint-fill-border: var(--color-danger-border);
+		--tint-muted: var(--color-danger-muted);
+		--tint-muted-border: var(--color-danger-muted-border);
+		--tint-text: var(--color-as-danger);
+		--tint-vivid: color-mix(
+			in oklab,
+			var(--color-as-danger),
+			var(--color-danger) var(--vivid-mix)
+		);
+	}
+
+	[data-tint='warning'] {
+		--tint-fill: var(--color-warning);
+		--tint-on-fill: var(--color-on-warning);
+		--tint-fill-border: var(--color-warning-border);
+		--tint-muted: var(--color-warning-muted);
+		--tint-muted-border: var(--color-warning-muted-border);
+		--tint-text: var(--color-as-warning);
+		--tint-vivid: color-mix(
+			in oklab,
+			var(--color-as-warning),
+			var(--color-warning) var(--vivid-mix)
+		);
+	}
+}

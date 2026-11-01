@@ -1,0 +1,21 @@
+# docker compose up -d --build
+# Then open the setup link it logs: docker compose logs syncvault
+# Recovery: docker compose exec syncvault ./syncvault recover
+services:
+  syncvault:
+    build: .
+    image: syncvault
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - syncvault-data:/data
+    # Behind an https reverse proxy, set the URL users reach it at:
+    # environment:
+    #   PUBLIC_URL: https://sync.example.com
+    #   TRUST_PROXY: 'true'
+
+volumes:
+  syncvault-data:
+    # Not prefixed with the project's name, so it matches `docker run`'s.
+    name: syncvault-data
